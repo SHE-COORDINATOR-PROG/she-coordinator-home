@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    { "source": "/sertifikat", "destination": "https://dashboard-plant-she.vercel.app" },
+    { "source": "/sertifikat/:path*", "destination": "https://dashboard-plant-she.vercel.app/:path*" },
+
+    { "source": "/safety-form", "destination": "https://kpp-safety-form.vercel.app" },
+    { "source": "/safety-form/:path*", "destination": "https://kpp-safety-form.vercel.app/:path*" },
+
+    { "source": "/program-kerja", "destination": "https://program-kerja-plant-safety.vercel.app" },
+    { "source": "/program-kerja/:path*", "destination": "https://program-kerja-plant-safety.vercel.app/:path*" },
+
+    { "source": "/uji-kompetensi", "destination": "https://uji-kompetensi-k3.vercel.app" },
+    { "source": "/uji-kompetensi/:path*", "destination": "https://uji-kompetensi-k3.vercel.app/:path*" }
+  ]
+}

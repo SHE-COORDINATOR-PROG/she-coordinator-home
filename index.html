@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHE Coordinator — Plant Safety Implementasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:#0e3d24;
+    --mid:#1e6b3d;
+    --leaf:#3f9a52;
+    --mint:#e9f4e6;
+    --gold:#e8a721;
+    --gold-deep:#c8860f;
+    --red:#d33b2c;
+    --paper:#f6f8f2;
+    --ink:#0c1f13;
+    --sans:'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --script:'Caveat', cursive;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-x:hidden;}
+
+  /* ---------- LOGO STRIP ---------- */
+  .logo-strip{
+    background:linear-gradient(180deg,#ffffff,#eef6ec);
+    border-bottom:3px solid var(--mid);
+    box-shadow:0 2px 10px rgba(14,61,36,0.12);
+    overflow:hidden;
+    position:relative; z-index:5;
+  }
+  .logo-track{
+    display:flex; align-items:center; gap:34px;
+    padding:14px 6vw;
+    white-space:nowrap;
+    animation:driftLogos 34s linear infinite;
+    width:max-content;
+  }
+  .logo-strip:hover .logo-track{animation-play-state:paused;}
+  @keyframes driftLogos{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+  .logo-chip{
+    display:flex; align-items:center; gap:8px;
+    font-weight:800; font-size:14px; color:var(--deep);
+    padding:6px 14px; border-radius:999px;
+    background:#fff; border:1px solid rgba(14,61,36,0.15);
+  }
+  .logo-chip .dot{
+    width:9px;height:9px;border-radius:50%;
+    background:var(--gold); flex:none;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:640px;
+    background:
+      radial-gradient(ellipse at 15% 20%, rgba(255,255,255,0.35), transparent 55%),
+      linear-gradient(120deg, #d9ecd2 0%, #c3e2ba 38%, #eef6e8 100%);
+    display:flex; flex-direction:column; justify-content:center;
+    overflow:hidden;
+  }
+  .hero::before{ /* soft diagonal silhouettes right side, stand-in for worker photography */
+    content:""; position:absolute; right:0; top:0; bottom:0; width:46%;
+    background:
+      radial-gradient(circle at 70% 30%, rgba(14,61,36,0.10), transparent 60%),
+      repeating-linear-gradient(115deg, rgba(14,61,36,0.05) 0 26px, transparent 26px 52px);
+    clip-path:polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .field-lines{
+    position:absolute; inset:0; opacity:.15; pointer-events:none;
+    background-image:repeating-linear-gradient(115deg, var(--gold) 0 2px, transparent 2px 90px);
+  }
+
+  .hero-inner{
+    position:relative; z-index:2;
+    max-width:1200px; margin:0 auto; width:100%;
+    padding:64px 6vw 70px;
+    display:grid; grid-template-columns:1.05fr 1fr; gap:20px; align-items:center;
+  }
+
+  .hornbill-wrap{
+    position:relative; display:flex; justify-content:center; align-items:center;
+    animation:bob 5s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-14px);}
+  }
+  .hornbill-wrap svg{width:100%; max-width:340px; height:auto; filter:drop-shadow(0 18px 26px rgba(14,61,36,0.28));}
+  .mascot-img{width:100%; max-width:300px; height:auto; filter:drop-shadow(0 18px 26px rgba(14,61,36,0.28));}
+  .feather{transform-origin:center; animation:sway 3.4s ease-in-out infinite;}
+  .feather.f1{animation-delay:0s;}
+  .feather.f2{animation-delay:.3s;}
+  .feather.f3{animation-delay:.6s;}
+  .feather.f4{animation-delay:.9s;}
+  .feather.f5{animation-delay:1.2s;}
+  @keyframes sway{
+    0%,100%{transform:rotate(0deg);}
+    50%{transform:rotate(3.5deg);}
+  }
+
+  .brand-block{position:relative; z-index:2;}
+  .brand-block .word{
+    font-size:clamp(46px,7vw,84px); font-weight:800; letter-spacing:-0.02em;
+    color:var(--ink); line-height:.9; margin:0;
+    opacity:0; animation:riseIn .8s .1s ease forwards;
+  }
+  .brand-block .tagline{
+    font-family:var(--script); font-size:26px; color:var(--mid);
+    margin:6px 0 4px; opacity:0; animation:riseIn .8s .3s ease forwards;
+  }
+  .brand-block .url{
+    font-size:13px; letter-spacing:.08em; color:rgba(12,31,19,0.55);
+    opacity:0; animation:riseIn .8s .45s ease forwards;
+  }
+  @keyframes riseIn{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  .banner{
+    position:relative; z-index:3;
+    margin-top:36px;
+    background:linear-gradient(90deg, rgba(30,107,61,0.94), rgba(14,61,36,0.88) 70%, transparent);
+    padding:20px 6vw;
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;
+    border-top:2px solid rgba(255,255,255,0.25);
+    border-bottom:2px solid rgba(255,255,255,0.25);
+  }
+  .banner h1{
+    color:#fff; font-size:clamp(20px,2.4vw,28px); font-weight:800; margin:0;
+    opacity:0; animation:riseIn .7s .55s ease forwards;
+  }
+  .banner .plant-asto{
+    text-align:right; color:#fff;
+    opacity:0; animation:riseIn .7s .7s ease forwards;
+  }
+  .plant-asto .script{font-family:var(--script); font-size:24px; font-weight:700; display:block;}
+  .plant-asto .sub{font-size:12px; letter-spacing:.04em; opacity:.85;}
+
+  .particles span{
+    position:absolute; bottom:-20px; border-radius:50%;
+    background:var(--gold); opacity:.55;
+    animation:rise 9s linear infinite;
+  }
+  @keyframes rise{
+    0%{transform:translateY(0) translateX(0); opacity:0;}
+    10%{opacity:.6;}
+    100%{transform:translateY(-620px) translateX(30px); opacity:0;}
+  }
+
+  /* ---------- APP GRID ---------- */
+  main{max-width:1140px; margin:0 auto; padding:60px 6vw 90px; position:relative; z-index:1;}
+  .section-label{
+    font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-weight:800;
+    color:var(--gold-deep); margin-bottom:22px; display:flex; align-items:center; gap:12px;
+  }
+  .section-label::after{content:"";flex:1;height:2px;background:linear-gradient(90deg, var(--gold), transparent);}
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px;}
+  a.card{
+    background:#fff; text-decoration:none; color:var(--ink);
+    border-radius:16px; padding:26px 24px; min-height:150px;
+    display:flex; flex-direction:column; gap:12px;
+    border:1px solid rgba(14,61,36,0.10);
+    box-shadow:0 4px 16px rgba(14,61,36,0.06);
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    position:relative; overflow:hidden;
+  }
+  a.card::before{
+    content:""; position:absolute; left:0; top:0; bottom:0; width:5px;
+    background:linear-gradient(180deg, var(--gold), var(--mid));
+  }
+  a.card:hover{transform:translateY(-5px); box-shadow:0 14px 30px rgba(14,61,36,0.16); border-color:var(--leaf);}
+  .tag{
+    font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--mid); width:fit-content;
+  }
+  .card h2{font-size:20px; margin:0; font-weight:800;}
+  .card p{margin:0; font-size:14px; line-height:1.55; color:rgba(12,31,19,0.6); flex:1;}
+  .go{font-size:12px; font-weight:700; color:var(--gold-deep); display:flex; align-items:center; gap:6px;}
+  .go svg{transition:transform .18s ease;}
+  a.card:hover .go svg{transform:translateX(4px);}
+
+  footer{
+    text-align:center; padding:24px 6vw 40px; font-size:12px; color:rgba(12,31,19,0.45);
+  }
+
+  @media(max-width:820px){
+    .hero-inner{grid-template-columns:1fr; text-align:center;}
+    .brand-block{order:1;}
+    .hornbill-wrap{order:2;}
+    .banner{flex-direction:column; text-align:center;}
+    .banner .plant-asto{text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<div class="logo-strip">
+  <div class="logo-track" id="logoTrack">
+    <span class="logo-chip"><span class="dot"></span>KPP MINING</span>
+    <span class="logo-chip"><span class="dot"></span>CISS</span>
+    <span class="logo-chip"><span class="dot"></span>PLANT ASTO</span>
+    <span class="logo-chip"><span class="dot"></span>SATU INDONESIA</span>
+    <span class="logo-chip"><span class="dot"></span>SHE COORDINATOR</span>
+    <span class="logo-chip"><span class="dot"></span>#RAIH ENERGI</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="field-lines"></div>
+  <div class="particles" id="particles"></div>
+
+  <div class="hero-inner">
+    <div class="brand-block">
+      <p class="tagline">Kita Satu, Kita Bisa, Kita Hebat</p>
+      <h2 class="word">ASTO</h2>
+      <p class="url">www.kppmining.com</p>
+    </div>
+
+    <div class="hornbill-wrap">
+      <img src="assets/asto-mascot.png" alt="Maskot ASTO" class="mascot-img">
+    </div>
+  </div>
+
+  <div class="banner">
+    <h1>Plant Safety Implementasi</h1>
+    <div class="plant-asto">
+      <span class="script">Plant Asto</span>
+      <span class="sub">SHE COORDINATOR PROG · Production Hub</span>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="section-label">Aplikasi tersedia — 04</div>
+  <div class="grid">
+
+    <a class="card" href="/sertifikat">
+      <span class="tag">Monitoring</span>
+      <h2>Sertifikat Keahlian</h2>
+      <p>Pantau masa berlaku sertifikat keahlian personel (POM/POP dll) dan status kadaluarsa.</p>
+      <span class="go">Buka aplikasi
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
+
+    <a class="card" href="/safety-form">
+      <span class="tag">Formulir</span>
+      <h2>KPP Safety Form</h2>
+      <p>Pengisian dan pengumpulan formulir keselamatan kerja lapangan.</p>
+      <span class="go">Buka aplikasi
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
+
+    <a class="card" href="/program-kerja">
+      <span class="tag">Perencanaan</span>
+      <h2>Program Kerja Plant Safety</h2>
+      <p>Susun dan lacak realisasi program kerja tim plant safety.</p>
+      <span class="go">Buka aplikasi
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
+
+    <a class="card" href="/uji-kompetensi">
+      <span class="tag">Refreshment</span>
+      <h2>Uji Kompetensi K3</h2>
+      <p>Refreshment dan uji ulang kompetensi K3 untuk personel plant.</p>
+      <span class="go">Buka aplikasi
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
+
+  </div>
+</main>
+
+<footer>SHE-COORDINATOR-PROG · Gateway 4 aplikasi dalam 1 domain</footer>
+
+<script>
+  // duplicate logo strip content for seamless infinite scroll
+  const track = document.getElementById('logoTrack');
+  track.innerHTML += track.innerHTML;
+
+  // floating particles
+  const box = document.getElementById('particles');
+  for(let i=0;i<14;i++){
+    const s = document.createElement('span');
+    const size = 4 + Math.random()*6;
+    s.style.width = size+'px';
+    s.style.height = size+'px';
+    s.style.left = (Math.random()*100)+'%';
+    s.style.animationDuration = (7+Math.random()*6)+'s';
+    s.style.animationDelay = (Math.random()*8)+'s';
+    box.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
