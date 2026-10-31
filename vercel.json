@@ -11,5 +11,9 @@
 
     { "source": "/uji-kompetensi", "destination": "https://uji-kompetensi-k3.vercel.app" },
     { "source": "/uji-kompetensi/:path*", "destination": "https://uji-kompetensi-k3.vercel.app/:path*" }
+
+    ,
+    { "source": "/monitoring-jsa", "destination": "https://monitoring-jsa-v2.vercel.app" },
+    { "source": "/monitoring-jsa/:path*", "destination": "https://monitoring-jsa-v2.vercel.app/:path*" }
   ]
 }
