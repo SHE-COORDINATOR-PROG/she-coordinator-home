@@ -65,7 +65,7 @@
     display:flex; flex-direction:column; justify-content:center;
     overflow:hidden;
   }
-  .hero::before{ /* soft diagonal silhouettes right side, stand-in for worker photography */
+  .hero::before{
     content:""; position:absolute; right:0; top:0; bottom:0; width:46%;
     background:
       radial-gradient(circle at 70% 30%, rgba(14,61,36,0.10), transparent 60%),
@@ -92,18 +92,7 @@
     0%,100%{transform:translateY(0);}
     50%{transform:translateY(-14px);}
   }
-  .hornbill-wrap svg{width:100%; max-width:340px; height:auto; filter:drop-shadow(0 18px 26px rgba(14,61,36,0.28));}
   .mascot-img{width:100%; max-width:300px; height:auto; filter:drop-shadow(0 18px 26px rgba(14,61,36,0.28));}
-  .feather{transform-origin:center; animation:sway 3.4s ease-in-out infinite;}
-  .feather.f1{animation-delay:0s;}
-  .feather.f2{animation-delay:.3s;}
-  .feather.f3{animation-delay:.6s;}
-  .feather.f4{animation-delay:.9s;}
-  .feather.f5{animation-delay:1.2s;}
-  @keyframes sway{
-    0%,100%{transform:rotate(0deg);}
-    50%{transform:rotate(3.5deg);}
-  }
 
   .brand-block{position:relative; z-index:2;}
   .brand-block .word{
@@ -239,10 +228,10 @@
 </section>
 
 <main>
-  <div class="section-label">Aplikasi tersedia — 06</div>
+  <div class="section-label">Aplikasi tersedia — 07</div>
   <div class="grid">
 
-    <a class="card" href="https://dashboard-plant-she.vercel.app" target="_blank" rel="noopener">
+    <a class="card" href="https://dashboard-plant-she.vercel.app">
       <span class="tag">Monitoring</span>
       <h2>Sertifikat Keahlian</h2>
       <p>Pantau masa berlaku sertifikat keahlian personel (POM/POP dll) dan status kadaluarsa.</p>
@@ -251,7 +240,7 @@
       </span>
     </a>
 
-    <a class="card" href="https://kpp-safety-form.vercel.app" target="_blank" rel="noopener">
+    <a class="card" href="https://kpp-safety-form.vercel.app">
       <span class="tag">Formulir</span>
       <h2>KPP Safety Form</h2>
       <p>Pengisian dan pengumpulan formulir keselamatan kerja lapangan.</p>
@@ -260,7 +249,7 @@
       </span>
     </a>
 
-    <a class="card" href="https://program-kerja-plant-safety.vercel.app" target="_blank" rel="noopener">
+    <a class="card" href="https://program-kerja-plant-safety.vercel.app">
       <span class="tag">Perencanaan</span>
       <h2>Program Kerja Plant Safety</h2>
       <p>Susun dan lacak realisasi program kerja tim plant safety.</p>
@@ -269,7 +258,7 @@
       </span>
     </a>
 
-    <a class="card" href="https://uji-kompetensi-k3.vercel.app" target="_blank" rel="noopener">
+    <a class="card" href="https://uji-kompetensi-k3.vercel.app">
       <span class="tag">Refreshment</span>
       <h2>Uji Kompetensi K3</h2>
       <p>Refreshment dan uji ulang kompetensi K3 untuk personel plant.</p>
@@ -278,7 +267,7 @@
       </span>
     </a>
 
-    <a class="card" href="https://monitoring-apd.vercel.app/" target="_blank" rel="noopener">
+    <a class="card" href="https://monitoring-apd.vercel.app/">
       <span class="tag">Monitoring</span>
       <h2>Monitoring APD</h2>
       <p>Formulir tanda terima APD dan riwayat penerimaan alat pelindung diri personel.</p>
@@ -287,7 +276,7 @@
       </span>
     </a>
 
-    <a class="card" href="https://rekam-checkup.vercel.app/" target="_blank" rel="noopener">
+    <a class="card" href="https://rekam-checkup.vercel.app/">
       <span class="tag">Kesehatan</span>
       <h2>Rekam Checkup</h2>
       <p>Pencatatan dan riwayat hasil pemeriksaan kesehatan (medical checkup) personel plant.</p>
@@ -296,10 +285,19 @@
       </span>
     </a>
 
+    <a class="card" href="https://monitoring-jsa-v2.vercel.app/">
+      <span class="tag">Monitoring</span>
+      <h2>Monitoring JSA</h2>
+      <p>Pantau dan kelola Job Safety Analysis (JSA) pekerjaan di plant.</p>
+      <span class="go">Buka aplikasi
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
+
   </div>
 </main>
 
-<footer>SHE-COORDINATOR-PROG · Gateway 6 aplikasi dalam 1 domain</footer>
+<footer>SHE-COORDINATOR-PROG · Gateway 7 aplikasi dalam 1 domain</footer>
 
 <script>
   // duplicate logo strip content for seamless infinite scroll
